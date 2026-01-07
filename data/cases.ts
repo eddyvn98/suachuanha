@@ -1,7 +1,10 @@
 
 import { RepairCase } from '../types';
 import { intermittentSmellCase } from './cases/intermittent-smell';
-
+import { maiNhaBiDotCase } from './cases/mai-nha-bi-dot'
+import { congSanTacCase } from './cases/cong-san-tac'
+import { voiNuocRoRiCase } from './cases/voi-nuoc-ro-ri';
+// Thêm maiNhaBiDotCase vào mảng ALL_CASES
 /* 
   =============================================================================
   CASE REGISTRY
@@ -119,22 +122,24 @@ const waterSmellsBadCase: RepairCase = {
 };
 
 const toiletCloggedCase: RepairCase = {
-    id: "toilet-clogged",
-    area: "water",
-    category: "toilet",
-    label: "Nghẹt bồn cầu",
-    icon: "🚽",
-    description: "Bồn cầu thoát chậm hoặc không trôi",
-    checklist: [{id: "q1", text: "Nước có dâng lên không?"}],
-    trials: [{id: "t1", title: "Dùng cây thụt", when: "Luôn thử đầu tiên", steps: ["Thụt mạnh 5 lần"]}, {id: "trial-stop", title: "Dừng và nhờ thợ", when: "Khi thất bại", steps: ["Gọi thợ"]}],
-    evaluate: () => ({level: "yellow", title: "Tắc nghẽn", message: "Thử thông tắc", recommendedTrialIds: ["t1", "trial-stop"]})
+  id: "toilet-clogged",
+  area: "water",
+  category: "toilet",
+  label: "Nghẹt bồn cầu",
+  icon: "🚽",
+  description: "Bồn cầu thoát chậm hoặc không trôi",
+  checklist: [{ id: "q1", text: "Nước có dâng lên không?" }],
+  trials: [{ id: "t1", title: "Dùng cây thụt", when: "Luôn thử đầu tiên", steps: ["Thụt mạnh 5 lần"] }, { id: "trial-stop", title: "Dừng và nhờ thợ", when: "Khi thất bại", steps: ["Gọi thợ"] }],
+  evaluate: () => ({ level: "yellow", title: "Tắc nghẽn", message: "Thử thông tắc", recommendedTrialIds: ["t1", "trial-stop"] })
 };
 
 // --- TỔNG HỢP ---
 
-export const ALL_CASES: RepairCase[] = [
-    sinkUnderLeakCase,
-    waterSmellsBadCase,
-    toiletCloggedCase,
-    intermittentSmellCase, // Added new case
+export const ALL_CASES: RepairCase[] = [sinkUnderLeakCase,
+  waterSmellsBadCase,
+  toiletCloggedCase,
+  intermittentSmellCase,
+  // Added new case,
+  congSanTacCase,
+  voiNuocRoRiCase,
 ];
